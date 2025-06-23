@@ -33,7 +33,7 @@ jobs:
     - name: Prepare artifacts
       run: |
         mkdir artifacts
-        cp src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/* src/output/
+        cp src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/* artifacts/
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -66,7 +66,7 @@ jobs:
         mkdir artifacts
         mv linux/* artifacts/
         mv windows/* artifacts/
-        mv src/extension-files/* artifacts/
+        mv src/gm-files-files/* artifacts/
         
     - name: Upload combined artifacts
       uses: actions/upload-artifact@v4
