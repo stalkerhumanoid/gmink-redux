@@ -29,12 +29,17 @@ jobs:
     - name: Build extension
       run: dotnet publish -c Release -r ${{ matrix.runtime }} --self-contained true -p:NativeLib=Shared -p:EnableCompressionInSingleFile=false
       working-directory: ./src
+
+    - name: Prepare artifacts
+      run: |
+        mkdir artifacts
+        cp src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/* src/output/
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: tmp-${{ matrix.name }}
-        path: src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/
+        path: artifacts/
   
   package:
     needs: build
@@ -48,17 +53,24 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: tmp-linux
-        path: src/output/
+        path: linux
         
     - name: Download Windows artifacts
       uses: actions/download-artifact@v4
       with:
         name: tmp-windows
-        path: src/output/
+        path: windows
+    
+    - name: Prepare artifacts
+      run: |
+        mkdir artifacts
+        mv linux/* artifacts/
+        mv windows/* artifacts/
+        mv src/extension-files/* artifacts/
         
     - name: Upload combined artifacts
       uses: actions/upload-artifact@v4
       with:
         name: GMInk
-        path: src/output/
+        path: artifacts/
 
