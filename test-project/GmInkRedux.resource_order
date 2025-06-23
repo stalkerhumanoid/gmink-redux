@@ -1,0 +1,11 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"GMInk","order":1,"path":"extensions/GMInk/GMInk.yy",},
+    {"name":"TEST","order":1,"path":"objects/TEST/TEST.yy",},
+    {"name":"room0","order":1,"path":"rooms/room0/room0.yy",},
+    {"name":"health_changed","order":3,"path":"scripts/health_changed/health_changed.yy",},
+    {"name":"scr_test","order":1,"path":"scripts/scr_test/scr_test.yy",},
+    {"name":"shake","order":5,"path":"scripts/shake/shake.yy",},
+  ],
+}

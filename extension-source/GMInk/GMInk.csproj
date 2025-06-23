@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <PublishAot>true</PublishAot>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <SelfContained>true</SelfContained>
+        <IlcDisableReflection>false</IlcDisableReflection>
+        <LangVersion>12</LangVersion>
+        <IlcTrimMetadata>false</IlcTrimMetadata>
+        <TrimMode>partial</TrimMode>
+        <IlcGenerateStackTraceData>true</IlcGenerateStackTraceData>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="./ink-engine-runtime.dll"/>
+        <None Include="ink-engine-runtime.dll" CopyToOutputDirectory="Always" />
+    </ItemGroup>
+</Project>
