@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: Build extension
+      run: dotnet publish -c Release -r linux-x64 --self-contained true -p:NativeLib=Shared -p:EnableCompressionInSingleFile=false
+      working-directory: ./src
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: gmink-extension
+        path: src/GMInk/bin/Release/net*/linux-x64/publish/
