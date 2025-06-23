@@ -30,13 +30,35 @@ jobs:
       run: dotnet publish -c Release -r ${{ matrix.runtime }} --self-contained true -p:NativeLib=Shared -p:EnableCompressionInSingleFile=false
       working-directory: ./src
       
-    - name: Prepare artifacts
-      shell: bash
-      run: |
-        cp src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/* src/output/
-      
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: gmink-${{ matrix.name }}
+        name: tmp-${{ matrix.name }}
+        path: src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/
+  
+  package:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download Linux artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: tmp-linux
         path: src/output/
+        
+    - name: Download Windows artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: tmp-windows
+        path: src/output/
+        
+    - name: Upload combined artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: GMInk
+        path: src/output/
+
