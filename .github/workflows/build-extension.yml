@@ -30,8 +30,13 @@ jobs:
       run: dotnet publish -c Release -r ${{ matrix.runtime }} --self-contained true -p:NativeLib=Shared -p:EnableCompressionInSingleFile=false
       working-directory: ./src
       
+    - name: Prepare artifacts
+      shell: bash
+      run: |
+        cp src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/* src/output/
+      
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: gmink-${{ matrix.name }}
-        path: src/GMInk/bin/Release/net*/${{ matrix.runtime }}/publish/*
+        path: src/output/
