@@ -16,6 +16,5 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="./ink-engine-runtime.dll"/>
-        <None Include="ink-engine-runtime.dll" CopyToOutputDirectory="Always" />
     </ItemGroup>
 </Project>
