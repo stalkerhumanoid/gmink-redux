@@ -27,7 +27,7 @@ jobs:
         dotnet-version: '9.0.x'
         
     - name: Build extension
-      run: dotnet publish -c Release -r ${{ matrix.runtime }}
+      run: dotnet publish -c Release -r ${{ matrix.runtime }} --self-contained
       working-directory: ./src
 
     - name: Prepare artifacts
