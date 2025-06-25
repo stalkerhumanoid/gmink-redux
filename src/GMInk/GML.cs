@@ -15,10 +15,10 @@ namespace GMWolf.GML
         private delegate bool GmlDSMapAddDoubleDelegate(int index, string key, double value);
         private delegate bool GmlDSMapAddStringDelegate(int index, string key, string value);
     
-        private static GmlEventPerformAsyncDelegate GmlEventPerformAsync;
-        private static GmlDSMapCreateDelegate GmlDSMapCreate;
-        private static GmlDSMapAddDoubleDelegate GmlDSMapAddDouble;
-        private static GmlDSMapAddStringDelegate GmlDSMapAddString;
+        private static GmlEventPerformAsyncDelegate? GmlEventPerformAsync;
+        private static GmlDSMapCreateDelegate? GmlDSMapCreate;
+        private static GmlDSMapAddDoubleDelegate? GmlDSMapAddDouble;
+        private static GmlDSMapAddStringDelegate? GmlDSMapAddString;
     
         private const int EVENT_OTHER_SOCIAL = 70;
 
@@ -36,6 +36,7 @@ namespace GMWolf.GML
         [RequiresUnreferencedCode("ToGmlMap")]
         public static void EventPerformAsync(Dictionary<string, dynamic> dictionary)
         {
+            if (GmlEventPerformAsync == null || GmlDSMapCreate == null) return;
             GmlEventPerformAsync(dictionary?.ToGmlMap() ?? GmlDSMapCreate(0), EVENT_OTHER_SOCIAL);
         }
     
@@ -43,6 +44,8 @@ namespace GMWolf.GML
         [DynamicDependency("ToGmlMap", typeof(GML))]
         private static int ToGmlMap(this Dictionary<string, dynamic> dictionary)
         {
+            if (GmlDSMapCreate == null) return 0;
+
             int id = GmlDSMapCreate(0);
 
             foreach (String key in dictionary.Keys)
@@ -56,18 +59,24 @@ namespace GMWolf.GML
         [DynamicDependency("GmlDSMapAdd", typeof(GML))]
         private static void GmlDSMapAdd(int id, string key, int value)
         {
+            if (GmlDSMapAddDouble == null) return;
+
             GmlDSMapAddDouble(id, key, value);
         }
     
         [DynamicDependency("GmlDSMapAdd", typeof(GML))]
         private static void GmlDSMapAdd(int id, string key, double value)
         {
+            if (GmlDSMapAddDouble == null) return;
+
             GmlDSMapAddDouble(id, key, value);
         }
     
         [DynamicDependency("GmlDSMapAdd", typeof(GML))]
         private static void GmlDSMapAdd(int id, string key, string value)
         {
+            if (GmlDSMapAddString == null) return;
+
             GmlDSMapAddString(id, key, value);
         }
     
@@ -76,12 +85,16 @@ namespace GMWolf.GML
         [DynamicDependency("GmlDSMapAdd", typeof(GML))]
         private static void GmlDSMapAdd(int id, string key, Dictionary<string, dynamic> value)
         {
+            if (GmlDSMapAddDouble == null) return;
+
             GmlDSMapAddDouble(id, key, value.ToGmlMap());
         }
     
         [DynamicDependency("ToGmlMap", typeof(GML))]
         private static int ToGmlMap(this Dictionary<string, string> d)
         {
+            if (GmlDSMapAddString == null || GmlDSMapCreate == null) return 0;
+
             int id = GmlDSMapCreate(0);
     
             foreach (String key in d.Keys)
@@ -96,6 +109,8 @@ namespace GMWolf.GML
         [DynamicDependency("ToGmlMap", typeof(GML))]
         private static int ToGmlMap(this Dictionary<String, Dictionary<String, dynamic>> d)
         {
+            if (GmlDSMapAddDouble == null || GmlDSMapCreate == null) return 0;
+
             int id = GmlDSMapCreate(0);
 
             foreach (String key in d.Keys)
@@ -123,7 +138,6 @@ namespace GMWolf.GML
             EventPerformAsync(map);
 
             return 0;
-
         }
     }
 }
