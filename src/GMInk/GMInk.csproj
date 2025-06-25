@@ -8,11 +8,13 @@
         <PublishAot>true</PublishAot>
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <SelfContained>true</SelfContained>
+        <EnableCompressionInSingleFile>false</EnableCompressionInSingleFile>
         <IlcDisableReflection>false</IlcDisableReflection>
         <LangVersion>12</LangVersion>
         <IlcTrimMetadata>false</IlcTrimMetadata>
         <TrimMode>partial</TrimMode>
         <IlcGenerateStackTraceData>true</IlcGenerateStackTraceData>
+        <NativeLib>Shared</NativeLib>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="./ink-engine-runtime.dll"/>
