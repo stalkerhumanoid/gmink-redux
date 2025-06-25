@@ -11,7 +11,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"",
-  "copyToTargets":64,
+  "copyToTargets":192,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"0.0.1",
@@ -67,7 +67,7 @@
         {"name":"ink_observe_variable","path":"extensions/GMInk/GMInk.yy",},
         {"name":"ink_bind_external","path":"extensions/GMInk/GMInk.yy",},
       ],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
-    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":64,"filename":"GMInk.so","final":"","functions":[
+    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":128,"filename":"GMInk.so","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"ink_load","argCount":0,"args":[1,],"documentation":"","externalName":"Load","help":"","hidden":false,"kind":1,"name":"ink_load","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"ink_can_continue","argCount":0,"args":[],"documentation":"","externalName":"CanContinue","help":"","hidden":false,"kind":1,"name":"ink_can_continue","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"ink_continue","argCount":0,"args":[],"documentation":"","externalName":"Continue","help":"","hidden":false,"kind":1,"name":"ink_continue","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
