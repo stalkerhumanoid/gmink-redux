@@ -32,7 +32,7 @@ namespace GMWolf.GML
         }
     
     
-        private static void EventPerformAsync(Dictionary<string, dynamic> dictionary)
+        public static void EventPerformAsync(Dictionary<string, dynamic> dictionary)
         {
             if (GmlEventPerformAsync == null || GmlDSMapCreate == null) return;
             GmlEventPerformAsync(dictionary?.ToGmlMap() ?? GmlDSMapCreate(0), EVENT_OTHER_SOCIAL);
