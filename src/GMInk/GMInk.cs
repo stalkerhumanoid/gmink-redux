@@ -9,6 +9,8 @@ namespace GMWolf.GMInk
     {
         private static Story? story;
 
+        [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(GMInk))]
+        [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(GML))]
         static GMInk()
         {
         }
@@ -184,6 +186,7 @@ namespace GMWolf.GMInk
 
        
        
+        [RequiresUnreferencedCode("GML.CallScript"), UnmanagedCallersOnly(EntryPoint = "ObserveVariable", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
         public static unsafe void ObserveVariable(char* name, double script)
         { 
             var nameString = Marshal.PtrToStringUTF8((IntPtr)name) ?? "";
@@ -193,6 +196,7 @@ namespace GMWolf.GMInk
             });
         }
 
+        [RequiresUnreferencedCode("GML.CallScript"), UnmanagedCallersOnly(EntryPoint = "BindExternal", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
         public static unsafe void BindExternal(char* name, double script)
         {
             var nameString = Marshal.PtrToStringUTF8((IntPtr)name) ?? "";
