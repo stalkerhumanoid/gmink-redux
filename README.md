@@ -3,7 +3,7 @@
 # GMInk Redux
 Revival of the GMInk GameMaker extension [originally made by GMWolf.](https://marketplace.gamemaker.io/assets/5852/gmink)
 
-Actcs as a bridge between the Ink narrative scripting language and the GameMaker game engine.
+Acts as a bridge between the Ink narrative scripting language and the GameMaker game engine.
 
 Updated by me ([@stalkerhumanoid](https://github.com/stalkerhumanoid)) to help get the game [Decade](https://store.steampowered.com/app/3272360/Decade/) working on newer versions of Proton.
 
