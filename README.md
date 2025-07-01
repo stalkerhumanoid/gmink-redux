@@ -12,5 +12,5 @@ I am not a .NET dev and I learned just enough to accomplish what I set out to do
 ## Main Changes:
 - Updated to the latest .NET and Ink versions (9.0.x and 1.2.0 respectively)
 - Now exports native shared libraries using built-in .NET functionality rather than 3rd party DllEXport package
-- Added GitHub action which builds .dll for Windows _and_ .so for Linux
+- Added GitHub action which builds a .dll for Windows _and_ a .so for Linux
 - Includes ink-runtime-engine.dll file locally rather than relying on package
