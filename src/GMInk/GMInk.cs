@@ -36,7 +36,7 @@ namespace GMWolf.GMInk
         public static unsafe char* Continue()
         {
             var result = story?.Continue() ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
 
@@ -51,7 +51,7 @@ namespace GMWolf.GMInk
         public static unsafe char* CurrentChoice(double i)
         {
             var result = story?.currentChoices?[(int)i]?.text ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
 
@@ -66,7 +66,7 @@ namespace GMWolf.GMInk
         public static unsafe char* SaveState()
         {
             var result = story?.state.ToJson() ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
 
@@ -102,7 +102,7 @@ namespace GMWolf.GMInk
             {
                 result = "";
             }
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
         [UnmanagedCallersOnly(EntryPoint = "TagForContentAtPathCount", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
@@ -117,7 +117,7 @@ namespace GMWolf.GMInk
         {
             var pathString = Marshal.PtrToStringUTF8((IntPtr)path) ?? "";
             var result = story?.TagsForContentAtPath(pathString)?[(int)i] ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
         [UnmanagedCallersOnly(EntryPoint = "GlobalTagCount", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
@@ -130,7 +130,7 @@ namespace GMWolf.GMInk
         public static unsafe char* GlobalTag(double i)
         {
             var result = story?.globalTags?[(int)i] ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
         [UnmanagedCallersOnly(EntryPoint = "ChoosePathString", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
@@ -153,7 +153,7 @@ namespace GMWolf.GMInk
         {
             var varString = Marshal.PtrToStringUTF8((IntPtr)var) ?? "";
             var result = (story?.variablesState?[varString] ?? "").ToString() ?? "";
-            return (char*)Marshal.StringToHGlobalAnsi(result);
+            return (char*)Marshal.StringToCoTaskMemUTF8(result);
         }
 
         [UnmanagedCallersOnly(EntryPoint = "VariableSetReal", CallConvs = new[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
