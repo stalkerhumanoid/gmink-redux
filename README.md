@@ -14,3 +14,6 @@ I am not a .NET dev and I learned just enough to accomplish what I set out to do
 - Now exports native shared libraries using built-in .NET functionality rather than 3rd party DllEXport package
 - Added GitHub action which builds a .dll for Windows _and_ a .so for Linux
 - Includes ink-runtime-engine.dll file locally rather than relying on package
+
+## Update by DOKTOR:
+Changed `Marshal.StringToHGlobalAnsi` to `Marshal.StringToCoTaskMemUTF8` to support UTF-8
