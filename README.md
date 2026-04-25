@@ -15,5 +15,5 @@ I am not a .NET dev and I learned just enough to accomplish what I set out to do
 - Added GitHub action which builds a .dll for Windows _and_ a .so for Linux
 - Includes ink-runtime-engine.dll file locally rather than relying on package
 
-## Update by DOKTOR:
+### Update by [@IAMDOKTOR](https://github.com/IAMDOKTOR):
 Changed `Marshal.StringToHGlobalAnsi` to `Marshal.StringToCoTaskMemUTF8` to support UTF-8
